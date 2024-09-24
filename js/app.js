@@ -45,7 +45,9 @@ for (const section of sections) {
         const accountBalance = Number(totalBalance.innerText);
         const reduceBalance = accountBalance - amount;
         if (reduceBalance < 0) {
+          addInput.value = "";
           alert("Your account Balance is low, pleace recharge");
+
           return;
         }
         addDonateMoney.innerText = updateAmount;
