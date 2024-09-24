@@ -41,16 +41,19 @@ for (const section of sections) {
       if (!isNaN(amount) && amount > 0) {
         const totalDonateMoney = Number(addDonateMoney.innerText);
         const updateAmount = totalDonateMoney + amount;
-        addDonateMoney.innerText = updateAmount;
 
         const accountBalance = Number(totalBalance.innerText);
         const reduceBalance = accountBalance - amount;
-
+        if (reduceBalance < 0) {
+          alert("Your account Balance is low, pleace recharge");
+          return;
+        }
+        addDonateMoney.innerText = updateAmount;
         totalBalance.innerText = reduceBalance;
 
         addInput.value = "";
 
-        const historysection = document.getElementById("historyContainer");
+        // const historysection = document.getElementById("historyContainer");
         const historyDiv = document.createElement("div");
 
         const date = new Date();
@@ -113,6 +116,7 @@ blog.addEventListener("click", function () {
     historyBtn.classList.remove("bg-btnColor");
     donationBtn.classList.add("bg-btnColor");
     menu.style.textAlign = "center";
+    menu.className = "py-5";
 
     change = 0;
   }
